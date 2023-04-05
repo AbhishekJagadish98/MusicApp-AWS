@@ -1,0 +1,80 @@
+.username{
+text-align: center
+}
+
+.username h1{
+   font-family: 'Brush Script MT', cursive;
+   font-size: 50px;
+   color: Teal;
+   border: 5px solid;
+}
+
+.logout {
+  width: 100%;
+  text-align: right;
+}
+
+.subscribe{
+text-align: center
+}
+
+.subscribe h1{
+   font-size: 30px;
+   color: Olive;
+   border: 5px solid;
+}
+
+.subscribe table, th{
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+}
+
+.query{
+text-align: center
+}
+
+.query h1{
+   font-size: 30px;
+   color: CornflowerBlue;
+   border: 5px solid;
+}
+
+.query table, th{
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+}
+
+.subscribedesign{
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: green;
+  border-color: green;
+  text-decoration: none;
+}
+
+.unsubscribedesign{
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: red;
+  border-color: red;
+  text-decoration: none;
+}

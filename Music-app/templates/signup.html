@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Music Signup</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='signupstyles.css') }}">
+<body>
+  {% if err %}
+  <p class="message">{{ err }}</p>
+  {% endif %}
+  <div class="loginbox">
+  <img src="{{ url_for('static',filename='signing.png') }}" class="avatar">
+      <h1> SIGN UP </h1>
+      <form action="{{url_for('register')}}" method="POST">
+        <p>Email</p>
+        <input type="text" name="email" placeholder="Enter Email">
+        <p>Full Name</p>
+        <input type="text" name="fname" placeholder="Enter Full Name">
+        <p>Password</p>
+        <input type="password" name="password" placeholder="Enter Password">
+        <p></p>
+        <input type="submit" name="" value="Sign In">
+      </form>
+
+</div>
+
+</body>
+</head>
+</html>

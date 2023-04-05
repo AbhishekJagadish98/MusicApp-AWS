@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <title>Music</title>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='indexstyle.css') }}">
+</head>
+<body>
+  <div class='logout'>
+    <a href="{{ url_for('root') }}">Logout</a>
+  </div>
+  <div class = "username">
+    {%if name%}
+    <h1>{{name}}</h1>
+    {%else%}
+    <h1>{{ session['user'] }}</h1>
+    {% endif %}
+  </div>
+  <div class = "subscribe">
+    <h1>SUBSCRIPTION AREA</h1>
+    <form method="POST">
+    {% if items|length > 0 %}
+    <table>
+    <thead>
+    <tr>
+      <th>TITLE</th>
+      <th>ARTIST</th>
+      <th>YEAR</th>
+      <th>IMAGE</th>
+      <th>REMOVE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in items %}
+  <tr>
+    <td>{{ item.title }}</td>
+    <td>{{ item.artist }}</td>
+    <td>{{ item.year }}</td>
+    <td><img src="{{ item.image_url }} alt="Artist Image" width="200""></td>
+    <td><a href="{{ url_for('unsubscribe', title=item.title, artist=item.artist) }}" class="unsubscribedesign" style="color:white">Remove</a></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+
+  {% elif session['subscribe']|length > 0 %}
+  <table>
+  <thead>
+  <tr>
+    <th>TITLE</th>
+    <th>ARTIST</th>
+    <th>YEAR</th>
+    <th>IMAGE</th>
+    <th>REMOVE</th>
+  </tr>
+</thead>
+<tbody>
+{% for item in session['subscribe'] %}
+<tr>
+  <td>{{ item.title }}</td>
+  <td>{{ item.artist }}</td>
+  <td>{{ item.year}}</td>
+  <td>{{ item.year}}</td>
+  <td><a href="{{ url_for('unsubscribe', title=item.title, artist=item.artist) }}" class="unsubscribedesign" style="color:white">Remove</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+<p>No items found.</p>
+{% endif %}
+</form>
+  </div>
+  <div class = "query">
+    <h1>QUERY AREA</h1>
+    <form action="{{ url_for('musicquery') }}" method="POST">
+      <p>TITLE</p>
+      <input type="text" name="title" placeholder="Enter Title">
+      <p>ARTIST</p>
+      <input type="text" name="artist" placeholder="Enter Artist">
+      <p>YEAR</p>
+      <input type="text" name="year" placeholder="Enter Year">
+      <p></p>
+      <input type="submit" value="Query">
+    </form>
+    <table>
+      {% if result %}
+        <h2>Query Result</h2>
+        {% if result == "No result. Please try again." %}
+          <p>{{ result }}</p>
+        {% else %}
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Artist</th>
+                <th>Artist Image</th>
+                <th>Subscribe</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for music in result %}
+                <tr>
+                  <td>{{ music['title'] }}</td>
+                  <td>{{ music['year'] }}</td>
+                  <td>{{ music['artist'] }}</td>
+                  <td><img src="{{ music['image_url'] }}" alt="Artist Image" width="200"></td>
+                  <td>
+                    <form action="{{ url_for('musicquery') }}" method="POST">
+                      <input type="hidden" name="title" value="{{ music['title'] }}">
+                      <input type="hidden" name="year" value="{{ music['year'] }}">
+                      <input type="hidden" name="artist" value="{{ music['artist'] }}">
+                      <input type="hidden" name="image_url" value="{{ music['image_url'] }}">
+                      <a href="{{ url_for('subscribe', title=music['title'], artist=music['artist'], year=music['year']) }}" class="subscribedesign" style="color:white">Subscribe</a>
+                    </form>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      {% endif %}
+  </div>
+</body>
+</html>
