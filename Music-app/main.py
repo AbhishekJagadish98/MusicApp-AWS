@@ -10,9 +10,9 @@ app.secret_key = 'etretrgrvfevgrerer'
 
 dynamodb = boto3.resource('dynamodb',
                           region_name = 'us-east-1',
-                          aws_access_key_id='ASIAX6ND5WK3BZW4W2F7',
-                          aws_secret_access_key='DTRFIdUUGV9OG8yxS0YxYl9sfmpowRlomKHuQfkW',
-                          aws_session_token='FwoGZXIvYXdzECYaDJVaRtL67NlnLMx1OCLNAXxQeVbbT/PmhGk1sfd4p/aRdlwr8cy3JDcH1XcpITYD602CHH1NGcuTEjjnHgoT3o0dI3HAx/SfiN6jPzSw87CWebKmfusTFwGNxADJt8q0CfN6oAYA0jBOVBy6vsMPfplXyMzKPAbt+gGZDjx9+cdCDgtm60znHVD7BYW5sXb7sGlMqhG+nSpf1/38sOxenLNOQ2Q+ri/ptddhmaU/27YZHztTUQZIX4Mw57YMWdTqaIAaz7QfKRQlYCfyHHUBU0nnYXik+B3wbMpKO/Aop7KwoQYyLWfqCX0EjN/nvAGOpf6Qs/r/7+fKVytCFT1uEzzTuZcf3CJJMiGSN+MhW9fjlA==')
+                          aws_access_key_id='Add-your-own',
+                          aws_secret_access_key='Add-your-own',
+                          aws_session_token='Add-your-own')
 
 
 def sessionset(name,items):
